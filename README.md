@@ -26,7 +26,7 @@ const app = new Koa();
 const router = new Router();
 
 const routes = new RouterConfig('routes.yaml');
-routes.inject(RouterConfig.PROXY(router, { directory: 'routes' });
+routes.inject(router, { directory: 'routes' });
 
 app.use(router.routes()).listen(3000);
 ```
@@ -67,7 +67,7 @@ const app = new Koa();
 const router = new Router();
 
 const routes = new RouterConfig('controllers');
-routes.inject(RouterConfig.PROXY(router, { param: '.as.param', asterisk: '.as.asterisk' });
+routes.inject(router, { param: '.as.param', asterisk: '.as.asterisk' });
 
 app.use(router.routes()).listen(3000);
 ```

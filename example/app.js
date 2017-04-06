@@ -10,12 +10,13 @@ const RouterConfig  = require('..');
 
 const app     = new Koa();
 const router  = new Router();
+const router2 = new Router();
 
 const routes = new RouterConfig();
 routes.use('routes.yaml');
 routes.use('controllers');
 
-routes.inject(RouterConfig.PROXY(router, {
+routes.inject(router, {
     execute: (handler) => async (ctx) => {
         if (handler.isClass) {
             handler = new handler();
@@ -23,7 +24,7 @@ routes.inject(RouterConfig.PROXY(router, {
         }
         await handler(ctx);
     }
-}));
-
+});
+routes.inject(router2);
 
 module.exports = app.use(router.routes()).listen(3000);
