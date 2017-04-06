@@ -82,5 +82,5 @@ in _welcome.js_
 
 ```
 exports.GET = async (ctx, next) => {...}
-exports.DEL = async (ctx, next) => {...}
+exports.POST = async (ctx, next) => {...}
 ```
