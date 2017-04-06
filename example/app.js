@@ -5,7 +5,6 @@
 process.mainModule = module;
 
 const Koa           = require('koa');
-// const Router = require('lark-router');
 const Router        = require('koa-router');
 const RouterConfig  = require('..');
 
