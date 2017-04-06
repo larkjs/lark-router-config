@@ -1,6 +1,6 @@
 {
   "name": "lark-router-config",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A router configure lib for lark-router",
   "main": "./lib/RouterConfig.js",
   "directories": {

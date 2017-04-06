@@ -17,12 +17,14 @@ routes.use('routes.yaml');
 routes.use('controllers');
 
 routes.inject(router, {
-    execute: (handler) => async (ctx) => {
-        if (handler.isClass) {
-            handler = new handler();
-            return await handler.main(ctx);
-        }
-        await handler(ctx);
+    proxy(handler) {
+        return async (ctx) => {
+            if (handler.isClass) {
+                handler = new handler();
+                return await handler.main(ctx);
+            }
+            await handler(ctx);
+        };
     }
 });
 routes.inject(router2);
