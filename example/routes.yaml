@@ -1,0 +1,7 @@
+welcome:    GET   /yaml/welcome
+home:
+  user:     GET   /yaml/home/:name
+  profile:  GET   /yaml/home/:name/profile
+article:
+  read:     GET   /yaml/article/:title
+  comment:  POST  /yaml/article/:title/comment
