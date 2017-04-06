@@ -1,6 +1,5 @@
 'use strict';
 
-module.exports = async (ctx, next) => {
+module.exports = async (ctx) => {
     ctx.body = '/article/read';
-    await next();
 };

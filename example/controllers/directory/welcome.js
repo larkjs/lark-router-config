@@ -1,6 +1,5 @@
 'use strict';
 
-exports.GET = async (ctx, next) => {
+exports.GET = async (ctx) => {
     ctx.body = '/welcome';
-    await next();
 };

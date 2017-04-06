@@ -76,4 +76,10 @@ describe('loading from directory will work, too', () => {
             .expect(200)
             .expect('/article/comment on haohao', done);
     });
+
+    it('should response "Controller" when requesting GET /directory/controller', (done) => {
+        request.get('/directory/controller')
+            .expect(200)
+            .expect('Controller', done);
+    });
 });
