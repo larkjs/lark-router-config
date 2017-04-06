@@ -5,11 +5,12 @@
 process.mainModule = module;
 
 const Koa           = require('koa');
-const LarkRouter    = require('lark-router');
+// const Router = require('lark-router');
+const Router        = require('koa-router');
 const RouterConfig  = require('..');
 
 const app    = new Koa();
-const router = new LarkRouter();
+const router = new Router();
 
 const routes = new RouterConfig();
 routes.use('routes.yaml');
