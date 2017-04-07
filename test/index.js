@@ -47,6 +47,12 @@ describe('loading from directory will work, too', () => {
             .expect('/welcome', done);
     });
 
+    it('should response "main" when requesting GET /directory', (done) => {
+        request.get('/directory')
+            .expect(200)
+            .expect('main', done);
+    });
+
     it('should response "/home/user name = viringbells" when requesting GET /directory/home/viringbells', (done) => {
         request.get('/directory/home/viringbells')
             .expect(200)
