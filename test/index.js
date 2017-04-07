@@ -47,8 +47,8 @@ describe('loading from directory will work, too', () => {
             .expect('/welcome', done);
     });
 
-    it('should response "main" when requesting GET /directory', (done) => {
-        request.get('/directory')
+    it('should response "main" when requesting GET /', (done) => {
+        request.get('/')
             .expect(200)
             .expect('main', done);
     });
