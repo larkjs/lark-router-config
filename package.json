@@ -7,6 +7,7 @@
     "example": "example"
   },
   "dependencies": {
+    "debug": "^2.6.8",
     "escape-string-regexp": "^1.0.5",
     "extend": "^3.0.0",
     "lark-config": "^2.5.0"
