@@ -1,6 +1,6 @@
 {
   "name": "lark-router-config",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A router configure lib for lark-router",
   "main": "./lib/RouterConfig.js",
   "directories": {
@@ -10,7 +10,8 @@
     "debug": "^2.6.8",
     "escape-string-regexp": "^1.0.5",
     "extend": "^3.0.0",
-    "lark-config": "^2.5.0"
+    "lark-config": "^2.5.0",
+    "vi-misc": "^1.9.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
