@@ -5,10 +5,16 @@
 
 const agent = require('supertest');
 
-const app = require('../example/app');
-const request = agent(app);
+const example = require('lark-router-config/example');
+
+let request;
+before(async () => {
+    const server = await example();
+    request = agent(server);
+});
 
 describe('loading from config file will work', () => {
+
     it('should response "/welcome" when requesting GET /yaml/welcome', (done) => {
         request.get('/yaml/welcome')
             .expect(200)
