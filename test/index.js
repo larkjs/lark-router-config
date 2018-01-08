@@ -10,6 +10,7 @@ const example = require('lark-router-config/example');
 let request;
 before(async () => {
     const server = await example();
+    server.unref();
     request = agent(server);
 });
 
@@ -71,13 +72,13 @@ describe('loading from directory will work, too', () => {
             .expect('/home/profile name = viringbells', done);
     });
 
-    it('should response "/article/read title = viringbells" when requesting GET directory/article/viringbells', (done) => {
+    it('should response "/article/read title = viringbells" when requesting GET /directory/article/viringbells', (done) => {
         request.get('/directory/article/viringbells')
             .expect(200)
             .expect('/article/read title = viringbells', done);
     });
 
-    it('should response "/article/comment on viringbells" when requesting POST directory/article/viringbells/comment', (done) => {
+    it('should response "/article/comment on viringbells" when requesting POST /directory/article/viringbells/comment', (done) => {
         request.post('/directory/article/viringbells/comment')
             .expect(200)
             .expect('/article/comment on viringbells', done);

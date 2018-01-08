@@ -3,6 +3,7 @@
  **/
 'use strict';
 
+const assert        = require('assert');
 const debug         = require('debug')('lark-router-config');
 const escapeRegexp  = require('escape-string-regexp');
 const misc          = require('vi-misc');
@@ -11,14 +12,15 @@ const LarkConfig    = require('lark-config');
 
 class RouterConfig {
 
-    constructor() {
+    constructor(options = {}) {
         debug('construct');
-        this.config = new LarkConfig();
+        assert(options instanceof Object, 'Invalid options, should be an object');
+        this.config = new LarkConfig({ sep: path.sep });
     }
 
-    async use(config) {
+    async use(config, tags = []) {
         debug('using config');
-        await this.config.use(config);
+        await this.config.use(config, tags);
         return this;
     }
 
@@ -56,13 +58,15 @@ class RouterConfig {
         const method = key.toLowerCase();
         const paramMark = escapeRegexp(options.param || '.as.param');
         const asteriskMark = escapeRegexp(options.asterisk || '.as.asterisk');
+        debug('original', route);
         route = misc.path.split(prefix)
-                    .map(routeItem => routeItem.replace(new RegExp(`^(.*)${paramMark}$`), ':$1'))
-                    .map(routeItem => routeItem.replace(new RegExp(`^(.*)${asteriskMark}$`), ':$1*'))
-                    .join('/');
+            .map(routeItem => routeItem.replace(new RegExp(`^(.*)${paramMark}$`), ':$1'))
+            .map(routeItem => routeItem.replace(new RegExp(`^(.*)${asteriskMark}$`), ':$1*'))
+            .join('/');
         route = '/' + route;
         let handler = item;
         handler = options.proxy instanceof Function ? options.proxy(handler) : handler;
+        debug(`add [${method}] ${route}`);
         router[method](route, handler);
     }
 }
